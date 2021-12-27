@@ -16,19 +16,42 @@ class KayitFormu extends CI_Controller
 
     public function insert()
     {
-        $this->load->model("todo_model");
+        $isim           = $this->input->get("isim");
+        $email          = $this->input->get("email");
+        $kullaniciAdi   = $this->input->get("kullaniciAdi");
+        $parola         = $this->input->get("parola");
+        $adres          = $this->input->get("adres");
+        $sehir          = $this->input->get("sehir");
+        $ilce           = $this->input->get("ilce");
+        $mahalle        = $this->input->get("mahalle");
+        $kartNumarasi   = $this->input->get("kartNumarasi");
+        $kartIsim       = $this->input->get("kartIsim");
+        $cvv            = $this->input->get("cvv");
+        $gsm            = $this->input->get("gsm");
+        
+        $data = [
+            "isim"          => $isim,
+            "email"         => $email,
+            "kullaniciAdi"  => $kullaniciAdi,
+            "parola"        => $parola,
+            "adres"         => $adres,
+            "ilce"          => $ilce,
+            "sehir"         => $sehir,
+            "mahalle"       => $mahalle,
+            "kartNumarasi"  => $kartNumarasi,
+            "kartIsim"      => $kartIsim,
+            "cvv"           => $cvv,
+            "gsm"           => $gsm
+        ];
 
-        $todo_description = $this->input->post("todo_description");
+        $this->load->model("KayitFormu_Model");
 
-        $insert = $this->todo_model->insert(array(
-            "description" => $todo_description,
-            "complatedAt" => 0,
-            "createdAt"  => date("Y-m-d H:i:s")
-        ));
+        $insert = $this->KayitFormu_Model->insert($data);
 
         if ($insert) {
-            redirect(base_url());
+            echo "Bilgiler Kaydedildi.";
         }
+
     }
 
     public function delete($id)

@@ -61,59 +61,62 @@
 
 <body>
     <div class="container">
-        <div class="row d-flex justify-content-center mt-200"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Launch multistep Wizard </button> </div> <!-- Modal -->
+        <div class="row d-flex justify-content-center mt-200"> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"> Kayıt İşlemini Başlat</button> </div> <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Smart Wizard modal</h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                        <h5 class="modal-title" id="exampleModalLabel">Kayıt İşlemini </h5> <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
                     </div>
                     <div class="modal-body">
-                        <div id="smartwizard">
-                            <ul>
-                                <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-                                <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-                                <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-                                <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
-                            </ul>
-                            <div class="mt-4">
-                                <div id="step-1">
-                                    <div class="row">
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Name" required> </div>
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Email" required> </div>
+
+                        <form action="<?php echo base_url("kayitformu/insert") ?>" method="get">
+                            <div id="smartwizard">
+                                <ul>
+                                    <li><a href="#genelBilgiler">Aşama-1<br /><small>Genel Bilgiler</small></a></li>
+                                    <li><a href="#kullaniciBilgileri">Aşama-2<br /><small>Kullanıcı Bilgileri</small></a></li>
+                                    <li><a href="#odemeBilgileri">Aşama-3<br /><small>Ödeme Bilgileri</small></a></li>
+                                    <li><a href="#onay">Aşama-4<br /><small>Onay</small></a></li>
+                                </ul>
+                                <div class="mt-4">
+                                    <div id="genelBilgiler">
+                                        <div class="row">
+                                            <div class="col-md-6"> <input type="text" name="isim" class="form-control" placeholder="İsim Yazınız"> </div>
+                                            <div class="col-md-6"> <input type="text" name="email" class="form-control" placeholder="Email"> </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-6"> <input type="text" name="parola" class="form-control" placeholder="Parola"> </div>
+                                            <div class="col-md-6"> <input type="text" name="kullaniciAdi" class="form-control" placeholder="Kullanıcı Adı"> </div>
+                                        </div>
                                     </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Password" required> </div>
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Repeat password" required> </div>
+                                    <div id="kullaniciBilgileri">
+                                        <div class="row">
+                                            <div class="col-md-6"> <input type="text" name="adres" class="form-control" placeholder="Addres"> </div>
+                                            <div class="col-md-6"> <input type="text" name="sehir" class="form-control" placeholder="Şehir"> </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-6"> <input type="text" name="ilce" class="form-control" placeholder="İlçe"> </div>
+                                            <div class="col-md-6"> <input type="text" name="mahalle" class="form-control" placeholder="Mahalle"> </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div id="step-2">
-                                    <div class="row">
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Address" required> </div>
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="City" required> </div>
+                                    <div id="odemeBilgileri" class="">
+                                        <div class="row">
+                                            <div class="col-md-6"> <input type="text" name="kartNumarasi" class="form-control" placeholder="Kart Numarası"> </div>
+                                            <div class="col-md-6"> <input type="text" name="kartIsim" class="form-control" placeholder="Kart Üzerindeki İsim"> </div>
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-6"> <input type="text" name="cvv" class="form-control" placeholder="CVV"> </div>
+                                            <div class="col-md-6"> <input type="text" name="gsm" class="form-control" placeholder="Gsm"> </div>
+                                        </div>
                                     </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="State" required> </div>
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Country" required> </div>
-                                    </div>
-                                </div>
-                                <div id="step-3" class="">
-                                    <div class="row">
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Number" required> </div>
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Card Holder Name" required> </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="CVV" required> </div>
-                                        <div class="col-md-6"> <input type="text" class="form-control" placeholder="Mobile Number" required> </div>
-                                    </div>
-                                </div>
-                                <div id="step-4" class="">
-                                    <div class="row">
-                                        <div class="col-md-12"> <span>Thanks For submitting your details with BBBootstrap.com. we will send you a confirmation email. We will review your details and revert back.</span> </div>
+                                    <div id="onay" class="">
+                                        <div class="row">
+                                            <div class="col-md-12"> <input type="submit" class="form-control btn btn-primary" value="Formu Gönder"> </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
